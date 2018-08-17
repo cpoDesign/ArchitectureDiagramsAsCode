@@ -1,0 +1,47 @@
+context:
+  software-system:
+    name: Software System
+    description: A software system that solves some problem
+    relations:
+      to:
+        user: consumes
+    containers:
+      web-application:
+        name: Web Application
+        components:
+          controllers:
+            name: controllers endpoints
+            clases:
+              communication:
+                name: Orchestration system
+                relations:
+                  from:
+                    authentication:
+              authentication:
+                name: Authentication module
+                relations:
+                  from:
+                    authorisation:
+              authorisation:
+                name: Authorisation module
+      database:
+        name: Database
+        relations:
+          to: 
+            web-application:
+          from: 
+            web-application:
+        
+  user:
+    name: User
+    caption: Human
+    description: 
+    relations:
+      to:
+        software-system: consumes
+        admin: is
+        supervisor: is
+  admin:
+    name: Administrator
+  supervisor:
+    name: Supervisor
